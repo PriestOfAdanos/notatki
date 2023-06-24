@@ -47,7 +47,7 @@ Dolna wartość krytyczna wynosi 116.32, a górna 184.25.
 
 Ponieważ wartość statystyki testowej 185.25 jest większa od górnej wartości krytycznej, odrzucamy hipotezę H0 na korzyść H1. Więc, na podstawie naszej próby, istnieją dowody, że odchylenie standardowe populacji różni się od 1.
 
-## (2)
+### (2)
 W tym przypadku używamy testu dla dwóch proporcji. W próbie 1, n1 = 300, a x1 = 0.15 * 300 = 45. W próbie 2, n2 = 300, a x2 = 0.20 * 300 = 60.
 
 Podstawiamy do wzoru dla statystyki Z:
@@ -56,7 +56,7 @@ gdzie p = (x1 + x2) / (n1 + n2) = (45 + 60) / (300 + 300) = 0.175.
 
 Obliczamy Z i porównujemy z wartością krytyczną dla α = 0.01 (Z_critical = 2.58 dla dwustronnego testu). Jeżeli wartość bezwzględna Z będzie większa od wartości krytycznej, odrzucamy H0 na korzyść H1, że odsetek osób palących jest różny w obu populacjach.
 
-## (3)
+### (3)
 Współczynnik korelacji Pearsona ρ (rho) jest równy kowariancji podzielonej przez iloczyn odchyleń standardowych, więc ρ = Cov(X,Y) / (σ_x * σ_y) = 0.4 / (1 * 0.5) = 0.8.
 
 Współczynnik kierunkowy prostej regresji β wynosi ρ * (σ_y / σ_x) = 0.8 * (0.5 / 1) = 0.4.
@@ -65,7 +65,7 @@ Współczynnik przecięcia prostej regresji α wynosi średnia Y - β * średnia
 
 Więc równanie prostej regresji Y względem X to Y = 0.4X + 1.2.
 
-## (4)
+### (4)
 W modelu M/M/1:
 
 λ (intensywność napływu klientów) = 5/h
@@ -73,6 +73,70 @@ W modelu M/M/1:
 P0 (bezczynność serwera) = 1 - λ/μ = 1 - 5/6 ≈ 0.167, czyli stanowisko obsługi pozostaje bezczynne około 16,7% czasu.
 
 L (średnia liczba klientów w systemie) = λ / (μ - λ) = 5 / (6 - 5) = 5, więc średnia liczba klientów w systemie wynosi 5.
+
+### (5) 
+Przykładem modelu D/M/2/1 w praktyce może być mały punkt obsługi klienta na stacji benzynowej, gdzie są dwie kasy. Klienci, którzy kończą tankowanie, podchodzą do kasy w regularnych, deterministycznych odstępach czasu - na przykład co minutę, ponieważ tyle średnio trwa tankowanie samochodu.
+
+Czas obsługi klienta przez kasjera, czyli czas potrzebny na zapłatę i ewentualne dodatkowe czynności, takie jak kupno dodatkowych produktów, ma rozkład wykładniczy. Oznacza to, że niektóre transakcje są szybkie (tylko zapłata za paliwo), ale niektóre mogą trwać dłużej (klient decyduje się na dodatkowe zakupy).
+
+Ponieważ mamy tylko dwie kasy, jeżeli obie są zajęte, każdy następny klient, który skończył tankowanie, nie ma możliwości dołączenia do kolejki - musi czekać przy swoim samochodzie, aż jedno z miejsc się zwolni. W praktyce może to oznaczać, że klienci, którzy nie mają możliwości natychmiastowej obsługi, mogą zdecydować się na opuszczenie stacji bez dokonywania płatności, co wprowadza dodatkowe komplikacje w obsłudze takiego punktu.
+
+### Bonus: Regresja wieloraka
+
+Rozważmy następującą sytuację. Na podstawie próby losowej trzech cech X1, X2 i Y, otrzymano średnie wartości dla tych cech, które wynoszą odpowiednio 2, 3 i 4. Odchylenia standardowe dla X1, X2 i Y wynoszą odpowiednio 1, 1.5 i 2.
+
+Dodatkowo, otrzymano następujące kowariancje:
+
+kowariancja między X1 i Y wynosi 0.6,
+kowariancja między X2 i Y wynosi 0.8,
+kowariancja między X1 i X2 wynosi 0.5.
+Wyznacz równanie wielokrotnej regresji liniowej cechy Y względem cech X1 i X2.
+
+Do rozwiązania tego problemu, musimy znać zarówno wariancje dla X1 i X2, jak i kowariancje między nimi, aby móc zastosować wzory na współczynniki regresji dla regresji wielorakiej. Możemy to zrobić przy użyciu technik takich jak metoda najmniejszych kwadratów, ale wymaga to bardziej zaawansowanych obliczeń.
+
+Na początek, musimy sobie przypomnieć, że nasz cel polega na znalezieniu współczynników β0, β1, β2 dla modelu regresji wielorakiej, który wygląda tak:
+
+$$
+Y = β0 + β1\*X1 + β2\*X2 + ε
+$$
+
+Znamy średnie i odchylenia standardowe dla każdej z cech (X1, X2, Y), a także kowariancje między nimi. Z tego możemy obliczyć współczynniki kierunkowe (β1 i β2) oraz wyraz wolny (β0). Pamiętaj jednak, że w praktyce, te obliczenia są często wykonywane przez oprogramowanie statystyczne, takie jak R czy Python.
+
+Zacznijmy od obliczenia β1 i β2.
+
+β1 i β2 są współczynnikami regresji dla X1 i X2, odpowiednio, i mogą być obliczone przy użyciu następujących wzorów, które są wynikiem metody najmniejszych kwadratów:
+
+$$
+β1 = \frac{Cov(Y,X2)*Cov(X1,X2) - Cov(Y,X1)*Var(X2)}{Var(X1)*Var(X2) - (Cov(X1,X2))^2}
+$$
+
+$$
+β2 = \frac{Cov(Y,X1)*Cov(X1,X2) - Cov(Y,X2)*Var(X1)}{Var(X1)*Var(X2) - (Cov(X1,X2))^2}
+$$
+
+Pierwszym krokiem jest wyliczenie wariancji dla X1 i X2. Wariancja to kwadrat odchylenia standardowego, więc Var(X1) = 1^2 = 1 i Var(X2) = 1.5^2 = 2.25.
+
+Następnie, możemy obliczyć β1 i β2:
+
+$$
+β1 = \frac{0.8\*0.5 - 0.6\*2.25}{1\*2.25 - 0.5^2}= -0.35
+$$
+
+$$
+β2 = \frac{0.6\*0.5 - 0.8\*1}{1\*2.25 - 0.5^2} = 0.1
+$$
+
+Mamy teraz nasze współczynniki kierunkowe, więc pozostało nam tylko obliczyć wyraz wolny β0. Wyliczamy go używając średnich wartości X1, X2 i Y:
+
+$$
+β0 = E(Y) - β1\*E(X1) - β2\*E(X2) = 4 - (-0.35\*2) - (0.1\*3) = 4.1
+$$
+
+Więc równanie naszej regresji wielorakiej to:
+
+$$
+Y = 4.1 - 0.35\*X1 + 0.1\*X2
+$$
 
 # Wykłady
 
@@ -89,7 +153,7 @@ Test statystyczny jest procedurą, która pozwala na ocenę hipotezy na podstawi
 
 $$
 t = (X̄ - μ) / (s/√n)
-
+$$
 gdzie:
 
 - X̄ to średnia próbkowa,
