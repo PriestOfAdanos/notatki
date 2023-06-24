@@ -82,7 +82,7 @@ Załóżmy, że przeprowadzamy test t-Studenta dla jednej próbki, gdzie hipotez
 
 
 ### Rozkład normalny: 
-Rozkład normalny, znany również jako rozkład Gaussa, jest jednym z najważniejszych rozkładów w teorii prawdopodobieństwa i statystyce. Jego gęstość prawdopodobieństwa jest dana przez wzór:
+Jest to jeden z najważniejszych rozkładów w statystyce i jest często używany w naukach przyrodniczych do reprezentowania losowych zmiennych, które mają tendencję do grupowania się wokół średniej. Charakteryzuje się dzwonowatym kształtem i jest symetryczny wokół swojej średniej. Wzór na gęstość prawdopodobieństwa rozkładu normalnego to:
 
 $$
 f(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{ -\frac{(x-\mu)^2}{2\sigma^2} }
@@ -91,7 +91,7 @@ $$
 gdzie μ to wartość oczekiwana (średnia), a σ to odchylenie standardowe.
 
 ### Rozkład t-Studenta: 
-Rozkład t-Studenta jest używany w statystyce, gdy próbka jest mała. Jego gęstość prawdopodobieństwa jest dana przez wzór:
+Jest to rozkład prawdopodobieństwa, który jest używany do estymacji populacji, gdy rozmiar próbki jest mały. Jest szeroko stosowany w testach statystycznych, takich jak test t-Studenta. Wzór na gęstość prawdopodobieństwa rozkładu t-Studenta to:
 
 $$
 f_n(x) = \frac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi}\Gamma(\frac{n}{2})} \left(1 + \frac{x^2}{n}\right)^{-\frac{n+1}{2}}
@@ -99,8 +99,7 @@ $$
 
 gdzie n to liczba stopni swobody, a Γ to funkcja gamma.
 ### Rozkład chi kwadrat: 
-Rozkład chi kwadrat jest stosowany w statystyce, szczególnie w testach zgodności. Jego gęstość prawdopodobieństwa jest dana przez wzór:
-
+ Jest to rozkład prawdopodobieństwa zmiennej losowej, która jest sumą kwadratów n niezależnych standardowych zmiennych normalnych. Jest używany w testach statystycznych, w tym w teście chi kwadrat. Wzór na gęstość prawdopodobieństwa rozkładu chi kwadrat to:
 $$
 f(x;n) = \frac{1}{2^{n/2}\Gamma(n/2)} x^{n/2-1} e^{-x/2}
 $$
@@ -114,13 +113,16 @@ $$
 gdzie d1 i d2 to liczby stopni swobody, a B to funkcja beta.
 
 ### Statystyczne testy zgodności: 
-Testy zgodności są używane do sprawdzenia, czy dane empiryczne pasują do określonego rozkładu teoretycznego. Przykłady to test chi kwadrat Pearsona i test t-Studenta.
+Testy zgodności są używane do sprawdzenia, czy dane empiryczne pasują do określonego rozkładu teoretycznego. Przykłady to test chi kwadrat Pearsona i test t-Studenta. Testy te są szczególnie ważne w statystyce, ponieważ pozwalają na ocenę, czy dane są zgodne z oczekiwaniami teoretycznymi. Jeśli dane nie są zgodne, może to sugerować, że istnieje jakiś nieznany czynnik wpływający na dane.
 
 ### Test zgodności χ2 Pearsona:
-Test zgodności χ2 Pearsona jest jednym z najważniejszych testów zgodności. Hipoteza zerowa w teście χ2 Pearsona ma postać:
+Test zgodności χ2 Pearsona jest jednym z najważniejszych testów zgodności. Jest używany do sprawdzenia, czy obserwowane częstości kategorii zmiennej kategorycznej różnią się od tego, czego byśmy oczekiwali na podstawie teorii. Hipoteza zerowa w teście χ2 Pearsona ma postać:
 
 $$
 H_0 : X \sim F_0(·)
 $$
+
+### P-wartość testu statystycznego: 
+P-wartość jest używana w statystyce do określenia istotności wyników testu statystycznego. P-wartość to prawdopodobieństwo, że otrzymalibyśmy obecne lub bardziej ekstremalne wyniki, gdy hipoteza zerowa jest prawdziwa. Jeśli p-wartość jest mniejsza od ustalonego poziomu istotności (zazwyczaj 0,05), odrzucamy hipotezę zerową. Jeśli p-wartość jest większa, nie możemy odrzucić hipotezy zerowej. Pamiętaj, że p-wartość nie mówi nam o wielkości efektu ani o jego praktycznym znaczeniu - tylko o tym, czy efekt jest statystycznie istotny.
 
 
