@@ -1,3 +1,81 @@
+# Przykładowe kolokwium
+## Możliwe procesy napływu klientów i Możliwe rozkłady czasu obsługi:
+### Możliwe procesy napływu klientów:
+- M (Markowian, czyli wykładniczy): Klienci przychodzą zgodnie z procesem Poissona, co oznacza, że czasy pomiędzy kolejnymi przybyciami klientów są niezależne i mają rozkład wykładniczy. Jest to najbardziej powszechny model w teorii kolejkowej.
+
+- D (Deterministyczny): Klienci przychodzą w stałych, z góry określonych odstępach czasu. Na przykład, w systemie D/M/1, klient przybywa co jednostkę czasu.
+
+- G (Ogólny): Klienci przychodzą zgodnie z dowolnym rozkładem prawdopodobieństwa. Jest to najbardziej ogólny model, ale także najtrudniejszy do analizy.
+
+### Możliwe rozkłady czasu obsługi:
+
+- M (Markowian, czyli wykładniczy): Czas obsługi klienta ma rozkład wykładniczy. Tak jak w przypadku procesu napływu klientów, jest to najczęściej stosowany model w teorii kolejkowej.
+
+- D (Deterministyczny): Każdy klient jest obsługiwany dokładnie w określonym czasie. To jest rzadziej stosowany model, ale może być użyteczny w pewnych specyficznych sytuacjach, np. gdy czas obsługi jest z góry określony i niezmienny.
+
+- G (Ogólny): Czas obsługi klienta ma dowolny rozkład prawdopodobieństwa. Jest to najbardziej ogólny model, ale także najtrudniejszy do analizy.
+
+## Przykład 
+### Model M/M/1: 
+Jest to najprostszy model, który zakłada wykładniczy rozkład czasów przyjścia i obsługi oraz jedno stanowisko obsługi. Przyjmijmy, że λ (intensywność napływu klientów) wynosi 6 na godzinę, a μ (średnia szybkość obsługi) wynosi 8 na godzinę.
+
+Prawdopodobieństwo, że system jest pusty (P0), można obliczyć jako 1 - λ/μ = 1 - 6/8 = 0.25.
+
+Średnia liczba klientów w systemie (L) jest równa λ / (μ - λ) = 6 / (8 - 6) = 3.
+
+Średni czas spędzony przez klienta w systemie (W) jest równy 1 / (μ - λ) = 1 / (8 - 6) = 0.5 godziny = 30 minut.
+
+### Model M/M/2: 
+Jest to model z dwoma stanowiskami obsługi. Przyjmijmy, że λ wynosi 6 na godzinę, a μ wynosi 4 na godzinę na jedno stanowisko, co daje łączną szybkość obsługi 8 na godzinę.
+
+Prawdopodobieństwo, że system jest pusty, oblicza się na podstawie bardziej złożonego wzoru, który uwzględnia fakt, że system może obsługiwać dwóch klientów jednocześnie. W tym przypadku P0 = [1 + (λ/μ) + (λ/μ)²/2*(1!)]⁻¹ = [1 + (6/8) + (6/8)²/2]⁻¹ ≈ 0.38.
+
+Średnia liczba klientów w systemie (L) oblicza się jako λ / (μ - λ) + λ² / (2μ * (2μ - λ)) = 6 / (8 - 6) + 6² / (24(8 - 6)) = 3 + 1.5 = 4.5.
+
+Średni czas spędzony przez klienta w systemie (W) jest równy L / λ = 4.5 / 6 = 0.75 godziny = 45 minut.
+
+## Zadania 
+
+###  (1) 
+W testowaniu hipotez dotyczących wariancji korzysta się z rozkładu chi-kwadrat. Przyjmujemy hipotezę H0: σ^2 = 1 oraz H1: σ^2 ≠ 1. Odchylenie standardowe w próbie wynosi s = 1.25, a rozmiar próby n = 150.
+
+Wartość statystyki testowej chi-kwadrat wynosi (n-1)*s^2/σ^2 = (150-1)*1.25^2/1^2 = 185.25.
+
+Dla α = 0.05 i n-1 = 149 stopni swobody, z tablic rozkładu chi-kwadrat odczytujemy wartości krytyczne. Dla dwustronnego testu mamy dwie wartości krytyczne, górne i dolne.
+
+Dolna wartość krytyczna wynosi 116.32, a górna 184.25.
+
+Ponieważ wartość statystyki testowej 185.25 jest większa od górnej wartości krytycznej, odrzucamy hipotezę H0 na korzyść H1. Więc, na podstawie naszej próby, istnieją dowody, że odchylenie standardowe populacji różni się od 1.
+
+## (2)
+W tym przypadku używamy testu dla dwóch proporcji. W próbie 1, n1 = 300, a x1 = 0.15 * 300 = 45. W próbie 2, n2 = 300, a x2 = 0.20 * 300 = 60.
+
+Podstawiamy do wzoru dla statystyki Z:
+Z = (p1 - p2) - 0 / sqrt( p * ( 1 - p ) * [ (1/n1) + (1/n2) ] )
+gdzie p = (x1 + x2) / (n1 + n2) = (45 + 60) / (300 + 300) = 0.175.
+
+Obliczamy Z i porównujemy z wartością krytyczną dla α = 0.01 (Z_critical = 2.58 dla dwustronnego testu). Jeżeli wartość bezwzględna Z będzie większa od wartości krytycznej, odrzucamy H0 na korzyść H1, że odsetek osób palących jest różny w obu populacjach.
+
+## (3)
+Współczynnik korelacji Pearsona ρ (rho) jest równy kowariancji podzielonej przez iloczyn odchyleń standardowych, więc ρ = Cov(X,Y) / (σ_x * σ_y) = 0.4 / (1 * 0.5) = 0.8.
+
+Współczynnik kierunkowy prostej regresji β wynosi ρ * (σ_y / σ_x) = 0.8 * (0.5 / 1) = 0.4.
+
+Współczynnik przecięcia prostej regresji α wynosi średnia Y - β * średnia X = 2 - 0.4 * 2 = 1.2.
+
+Więc równanie prostej regresji Y względem X to Y = 0.4X + 1.2.
+
+## (4)
+W modelu M/M/1:
+
+λ (intensywność napływu klientów) = 5/h
+1/μ (średni czas obsługi) = 10 minut = 1/6 h, więc μ = 6/h
+P0 (bezczynność serwera) = 1 - λ/μ = 1 - 5/6 ≈ 0.167, czyli stanowisko obsługi pozostaje bezczynne około 16,7% czasu.
+
+L (średnia liczba klientów w systemie) = λ / (μ - λ) = 5 / (6 - 5) = 5, więc średnia liczba klientów w systemie wynosi 5.
+
+# Wykłady
+
 ### Dane do przykładów:
 - Grupa 1: średnia = 85, odchylenie standardowe = 10
 - Grupa 2: średnia = 90, odchylenie standardowe = 12
@@ -9,6 +87,7 @@ Weryfikację hipotezy zerowej przeprowadzamy na podstawie wyników próby losowe
 
 Test statystyczny jest procedurą, która pozwala na ocenę hipotezy na podstawie próby danych. Przykładem może być test t-Studenta, który jest używany do porównania średnich dwóch grup. Wzór na statystykę t jest następujący:
 
+$$
 t = (X̄ - μ) / (s/√n)
 
 gdzie:
@@ -21,15 +100,20 @@ gdzie:
 ##### Przykład praktyczny
 
 Obliczmy wartość t-statystyki:
-t = (X̄1 - X̄2) / sqrt[(s1^2/n1) + (s2^2/n2)]
+
+$$
+t = \frac{X1 - X2}{\sqrt{\frac{s_{1}^{2}}{n_{1}} + \frac{s_{2}^2}{n_{2}}}}
+$$
+
 gdzie:
 - X̄1, X̄2 to średnie dla grupy 1 i 2,
 - s1, s2 to odchylenia standardowe dla grupy 1 i 2,
 - n1, n2 to rozmiary próbek dla grupy 1 i 2.
 - Podstawiając wartości do wzoru, otrzymujemy:
 
-t = (85 - 90) / sqrt[(10^2/10) + (12^2/10)] = -5 / sqrt[10 + 14.4] = -5 / 4.9 = -1.02
-
+$$
+t = \frac{90-85}{\sqrt{\frac{10^{2}}{10} + \frac{12^2}{10}}}= -5 / \sqrt{10 + 14.4} = \frac{-5}{4.9} = 1.02
+$$
 
 ### Zbiór krytyczny: 
 Zbiór krytyczny: Zbiór krytyczny to zbiór wartości, które prowadzą do odrzucenia hipotezy zerowej. Na przykład, dla testu t-Studenta z poziomem istotności 0.05 i stopniami swobody df = n - 1, zbiór krytyczny to zbiór wszystkich wartości t, które są większe od wartości t-krytycznej (można ją znaleźć w tabeli rozkładu t-Studenta dla danego poziomu istotności i stopni swobody).
@@ -133,7 +217,14 @@ $$
 D_n = sup_{x in R} |F_0(x) - F_n(x)|,
 $$
 
-gdzie $F_n(\cdot)$ jest dystrybuantą empiryczną cechy $X$ utworzoną na podstawie próby losowej prostej $(X_1, ..., X_n)$ (strona 4).
+gdzie $F_n(\cdot)$ jest dystrybuantą empiryczną cechy $X$ utworzoną na podstawie próby losowej prostej $(X_1, ..., X_n)$.
+
+#### Przykład
+Załóżmy, że mamy próbę 5 liczb: 1, 2, 3, 4, 5. Chcemy sprawdzić, czy te liczby pochodzą z rozkładu jednostajnego na przedziale [1, 5]. W tym przypadku, $F_0(x)$ to dystrybuanta rozkładu jednostajnego, a $F_n(x)$ to dystrybuanta empiryczna naszej próby. Obliczamy wartość $D_n$ i porównujemy ją z wartością krytyczną dla danego poziomu istotności.
+
+W przypadku rozkładu jednostajnego, dystrybuanta $F_0(x)$ to $(x - 1) / 4$ dla $x$ w przedziale [1, 5]. Dystrybuanta empiryczna $F_n(x)$ to liczba obserwacji w próbie mniejszych lub równych $x$, podzielona przez liczbę wszystkich obserwacji. Dla naszej próby, $F_n(x)$ to $x / 5$ dla $x$ w przedziale [1, 5].
+
+Obliczamy $D_n$ jako największą różnicę między $F_0(x)$ a $F_n(x)$ dla $x$ w przedziale [1, 5]. W tym przypadku, $D_n$ to największa wartość z $|(x - 1) / 4 - x / 5|$ dla $x$ równego 1, 2, 3, 4, 5. Obliczamy te różnice i bierzemy największą z nich.
 
 ### Test Craméra-von Misesa:
 Statystyka testowa tego testu ma postać: 
@@ -143,6 +234,13 @@ W^2 = n int_{-infty}^{infty} [F_0(x) - F_n(x)]^2 dF_0(x) = 1/(12n) + sum_{i=1}^{
 $$
 
 Zbiór krytyczny testu Craméra-von Misesa jest zbiorem prawostronnym i ma postać $K = [c_{n,1-\alpha}, \infty)$, gdzie $c_{n,1-\alpha}$ jest kwantylem rzędu $1 - \alpha$ statystyki $W^2$ (strona 37).
+
+#### Przykład 
+Załóżmy, że mamy próbę 5 liczb: 1, 2, 3, 4, 5. Chcemy sprawdzić, czy te liczby pochodzą z rozkładu jednostajnego na przedziale [1, 5]. W tym przypadku, $F_0(x)$ to dystrybuanta rozkładu jednostajnego, a $F_n(x)$ to dystrybuanta empiryczna naszej próby. Obliczamy wartość $W^2$ i porównujemy ją z wartością krytyczną dla danego poziomu istotności.
+
+W przypadku rozkładu jednostajnego, dystrybuanta $F_0(x)$ to $(x - 1) / 4$ dla $x$ w przedziale [1, 5]. Dystrybuanta empiryczna $F_n(x)$ to liczba obserwacji w próbie mniejszych lub równych $x$, podzielona przez liczbę wszystkich obserwacji. Dla naszej próby, $F_n(x)$ to $x / 5$ dla $x$ w przedziale [1, 5].
+
+Obliczamy $W^2$ jako sumęPrzykro mi za wcześniejsze nieporozumienie. Poniżej znajdują się przykładowe obliczenia dla każdego z testów statystycznych, które opisałem wcześniej. Przyjmijmy, że mamy próbę 5 liczb: 1, 2, 3, 4, 5. Chcemy sprawdzić, czy te liczby pochodzą z rozkładu jednostajnego na przedziale [1, 5].
 
 ### Test Kołmogorowa-Lillieforsa:
 Test Kołmogorowa-Lillieforsa jest testem normalności rozkładu, a zatem jego stosowalność jest ograniczona do weryfikacji hipotez o zgodności rozkładu badanej cechy $X$ z rozkładem normalnym. Hipoteza zerowa ma postać:
@@ -154,10 +252,7 @@ $$
 gdzie $s^2(\bar{x}) = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2$.
 
 #### Przykład 
-Załóżmy, że mamy próbę 5 liczb: 1, 2, 3, 4, 5. Chcemy sprawdzić, czy te liczby pochodzą z rozkładu jednostajnego na przedziale [1, 5]. W tym przypadku, $F_0(x)$ to dystrybuanta rozkładu jednostajnego, a $F_n(x)$ to dystrybuanta empiryczna naszej próby. Obliczamy wartość $D_n$ i porównujemy ją z wartością krytyczną dla danego poziomu istotności.
-
 W przypadku rozkładu jednostajnego, dystrybuanta $F_0(x)$ to $(x - 1) / 4$ dla $x$ w przedziale [1, 5]. Dystrybuanta empiryczna $F_n(x)$ to liczba obserwacji w próbie mniejszych lub równych $x$, podzielona przez liczbę wszystkich obserwacji. Dla naszej próby, $F_n(x)$ to $x / 5$ dla $x$ w przedziale [1, 5].
-
 Obliczamy $D_n$ jako największą różnicę między $F_0(x)$ a $F_n(x)$ dla $x$ w przedziale [1, 5]. W tym przypadku, $D_n$ to największa wartość z $|(x - 1) / 4 - x / 5|$ dla $x$ równego 1, 2, 3, 4, 5. Obliczamy te różnice i bierzemy największą z nich.
 
 ### Test Shapiro-Wilka:
@@ -168,3 +263,6 @@ W = (sum_{i=1}^{[n/2]} a_i(n)[X(n-i+1) - X(i)])^2 / sum_{i=1}^{n} (X_i - X_bar)^
 $$
 
 gdzie $[n/2]$ oznacza część całkowitą liczby $n/2$, a $n$ jest liczebnością próby losowej
+
+#### Przykład 
+W tym teście, obliczamy wartość statystyki testowej $W$ jako kwadrat sumy różnic między kolejnymi liczbami w próbie a ich średnią, podzielony przez sumę kwadratów odchyleń odPrzykro mi za wcześniejsze nieporozumienie. Poniżej znajdują się przykładowe obliczenia dla każdego z testów statystycznych, które opisałem wcześniej. Przyjmijmy, że mamy próbę 5 liczb: 1, 2, 3, 4, 5. Chcemy sprawdzić, czy te liczby pochodzą z rozkładu jednostajnego na przedziale [1, 5].
