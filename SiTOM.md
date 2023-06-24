@@ -125,4 +125,46 @@ $$
 ### P-wartość testu statystycznego: 
 P-wartość jest używana w statystyce do określenia istotności wyników testu statystycznego. P-wartość to prawdopodobieństwo, że otrzymalibyśmy obecne lub bardziej ekstremalne wyniki, gdy hipoteza zerowa jest prawdziwa. Jeśli p-wartość jest mniejsza od ustalonego poziomu istotności (zazwyczaj 0,05), odrzucamy hipotezę zerową. Jeśli p-wartość jest większa, nie możemy odrzucić hipotezy zerowej. Pamiętaj, że p-wartość nie mówi nam o wielkości efektu ani o jego praktycznym znaczeniu - tylko o tym, czy efekt jest statystycznie istotny.
 
+### Test Kołmogorowa:
+Test Kołmogorowa jest testem hipotezy zerowej 
+$H_0 : X \sim F_0(\cdot)$, gdzie dystrybuanta $F_0(\cdot)$ jest dystrybuantą typu ciągłego w pełni określoną. Statystyka testowa ma postać:
 
+$$
+D_n = sup_{x in R} |F_0(x) - F_n(x)|,
+$$
+
+gdzie $F_n(\cdot)$ jest dystrybuantą empiryczną cechy $X$ utworzoną na podstawie próby losowej prostej $(X_1, ..., X_n)$ (strona 4).
+
+### Test Craméra-von Misesa:
+Statystyka testowa tego testu ma postać: 
+
+$$
+W^2 = n int_{-infty}^{infty} [F_0(x) - F_n(x)]^2 dF_0(x) = 1/(12n) + sum_{i=1}^{n} (2i - 1)/(2n) - F_0(X_i))^2.
+$$
+
+Zbiór krytyczny testu Craméra-von Misesa jest zbiorem prawostronnym i ma postać $K = [c_{n,1-\alpha}, \infty)$, gdzie $c_{n,1-\alpha}$ jest kwantylem rzędu $1 - \alpha$ statystyki $W^2$ (strona 37).
+
+### Test Kołmogorowa-Lillieforsa:
+Test Kołmogorowa-Lillieforsa jest testem normalności rozkładu, a zatem jego stosowalność jest ograniczona do weryfikacji hipotez o zgodności rozkładu badanej cechy $X$ z rozkładem normalnym. Hipoteza zerowa ma postać:
+
+$$
+H_0 : X ~ N(x_bar, s^2(x_bar)),
+$$
+
+gdzie $s^2(\bar{x}) = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2$.
+
+#### Przykład 
+Załóżmy, że mamy próbę 5 liczb: 1, 2, 3, 4, 5. Chcemy sprawdzić, czy te liczby pochodzą z rozkładu jednostajnego na przedziale [1, 5]. W tym przypadku, $F_0(x)$ to dystrybuanta rozkładu jednostajnego, a $F_n(x)$ to dystrybuanta empiryczna naszej próby. Obliczamy wartość $D_n$ i porównujemy ją z wartością krytyczną dla danego poziomu istotności.
+
+W przypadku rozkładu jednostajnego, dystrybuanta $F_0(x)$ to $(x - 1) / 4$ dla $x$ w przedziale [1, 5]. Dystrybuanta empiryczna $F_n(x)$ to liczba obserwacji w próbie mniejszych lub równych $x$, podzielona przez liczbę wszystkich obserwacji. Dla naszej próby, $F_n(x)$ to $x / 5$ dla $x$ w przedziale [1, 5].
+
+Obliczamy $D_n$ jako największą różnicę między $F_0(x)$ a $F_n(x)$ dla $x$ w przedziale [1, 5]. W tym przypadku, $D_n$ to największa wartość z $|(x - 1) / 4 - x / 5|$ dla $x$ równego 1, 2, 3, 4, 5. Obliczamy te różnice i bierzemy największą z nich.
+
+### Test Shapiro-Wilka:
+Test Shapiro-Wilka jest, podobnie jak test Kołmogorowa-Lillieforsa, testem normalności rozkładu. Test ten oparty jest na statystyce testowej postaci:
+
+$$
+W = (sum_{i=1}^{[n/2]} a_i(n)[X(n-i+1) - X(i)])^2 / sum_{i=1}^{n} (X_i - X_bar)^2,
+$$
+
+gdzie $[n/2]$ oznacza część całkowitą liczby $n/2$, a $n$ jest liczebnością próby losowej
