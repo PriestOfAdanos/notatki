@@ -330,3 +330,72 @@ gdzie $[n/2]$ oznacza część całkowitą liczby $n/2$, a $n$ jest liczebności
 
 #### Przykład 
 W tym teście, obliczamy wartość statystyki testowej $W$ jako kwadrat sumy różnic między kolejnymi liczbami w próbie a ich średnią, podzielony przez sumę kwadratów odchyleń odPrzykro mi za wcześniejsze nieporozumienie. Poniżej znajdują się przykładowe obliczenia dla każdego z testów statystycznych, które opisałem wcześniej. Przyjmijmy, że mamy próbę 5 liczb: 1, 2, 3, 4, 5. Chcemy sprawdzić, czy te liczby pochodzą z rozkładu jednostajnego na przedziale [1, 5].
+
+# Rzeczy z karty przemiotów:
+
+### Wzory Little’a
+Dla dowolnego stabilnego systemu kolejek:
+
+L = λW
+Gdzie:
+
+- L jest średnią liczbą jednostek w systemie,
+- λ jest średnim tempem przybycia jednostek do systemu,
+- W jest średnim czasem spędzonym w systemie przez jednostkę.
+#### Przykład:
+Załóżmy, że w sklepie, który działa od 9 do 17 (8 godzin), średnio 240 klientów odwiedza sklep codziennie, a średni czas spędzony przez klienta wynosi 10 minut. Średnie tempo przybycia λ wynosi 240 klientów / 8 godzin = 30 klientów na godzinę. Średni czas spędzony w systemie W wynosi 10 minut = 1/6 godziny. Zgodnie z wzorem Little'a, średnia liczba jednostek w systemie L wynosi λW = 30 * 1/6 = 5 klientów.
+
+### Modele kolejkowe M/M/1
+Dla modelu M/M/1, zakładając, że ρ (intensywność ruchu) jest mniejsza od 1:
+
+- Średnia liczba klientów w systemie: L = ρ / (1 - ρ)
+- Średnia liczba klientów w kolejce: Lq = ρ² / (1 - ρ)
+- Średni czas, jaki klient spędza w systemie: W = 1 / (μ - λ)
+- Średni czas, jaki klient spędza w kolejce: Wq = ρ / (μ - λ)
+Gdzie:
+
+λ to średnia liczba klientów przybywających na jednostkę czasu,
+μ to średnia liczba klientów obsługiwanych na jednostkę czasu.
+#### Przkład
+Załóżmy, że mamy system, gdzie średnia liczba klientów przybywających na jednostkę czasu λ wynosi 2 na minutę, a średnia liczba klientów obsługiwanych na jednostkę czasu μ wynosi 3 na minutę. Wówczas, intensywność ruchu ρ wynosi λ/μ = 2/3.
+
+- Średnia liczba klientów w systemie: L = ρ / (1 - ρ) = (2/3) / (1 - 2/3) = 2.
+- Średnia liczba klientów w kolejce: Lq = ρ² / (1 - ρ) = (2/3)² / (1 - 2/3) = 4/3 ≈ 1.33.
+- Średni czas, jaki klient spędza w systemie: W = 1 / (μ - λ) = 1 / (3 - 2) = 1 minuta.
+- Średni czas, jaki klient spędza w kolejce: Wq = ρ / (μ - λ) = (2/3) / (3 - 2) = 2/3 minuty ≈ 40 sekundy.
+
+### Modele kolejkowe M/M/c
+Dla modelu M/M/c, zakładając, że ρ (intensywność ruchu na serwer) jest mniejsza od 1:
+
+Pn = [(c*ρ)^n / n!] * P0 dla n < c
+Pn = [(c^c * ρ^n) / c!] * P0 dla n >= c
+P0 = (suma od n=0 do c-1 z [(cρ)^n / n!] + [(cρ)^c / (c! * (1-ρ))])^-1
+Gdzie:
+
+Pn to prawdopodobieństwo, że n klientów jest w systemie,
+P0 to prawdopodobieństwo, że system jest pusty,
+c to liczba serwerów.
+#### Przykład 
+Załóżmy, że mamy system z c=2 serwerami, gdzie średnia liczba klientów przybywających na jednostkę czasu λ wynosi 4 na godzinę, a średnia liczba klientów obsługiwanych na jednostkę czasu przez każdy serwer μ wynosi 3 na godzinę. Wówczas, intensywność ruchu na serwer ρ wynosi λ/(cμ) = 4/(23) = 2/3.
+
+P0 może być obliczone za pomocą wzoru podanego wcześniej. Następnie, dla n=0,1,2,..., obliczamy Pn za pomocą wzorów Pn.
+
+### Model M/G/1 i wzory Pollaczka-Khinchina
+Dla modelu M/G/1, wzory Pollaczka-Khinchina są następujące:
+
+L = λW
+Lq = λWq
+W = 1/μ + λσ²/2
+Wq = λσ²/2
+Gdzie:
+
+σ² to wariancja czasu obsługi,
+Wq to średni czas spędzony w kolejce.
+
+#### Przykład 
+Załóżmy, że mamy system, w którym średnia liczba klientów przybywających na jednostkę czasu λ wynosi 5 na godzinę, a średnia liczba klientów obsługiwanych na jednostkę czasu μ wynosi 7 na godzinę. Załóżmy, że wariancja czasu obsługi σ² wynosi 0.5 godziny².
+
+- Średnia liczba klientów w systemie: L = λ * (1/μ + λσ²/2) = 5 * (1/7 + 50.5/2) = 5 * (0.14 + 1.25) = 7.
+- Średnia liczba klientów w kolejce: Lq = λ² * σ² / 2 = 5² * 0.5 / 2 = 6.25.
+- Średni czas, jaki klient spędza w systemie: W = 1/μ + λσ²/2 = 1/7 + 50.5/2 = 1.64 godziny.
+- Średni czas, jaki klient spędza w kolejce: Wq = λσ² / 2 = 50.5/2 = 0.625 godziny = 37.5 minut.
