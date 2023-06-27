@@ -11,7 +11,7 @@ Statystyka testowa dla testu chi-kwadrat to (n-1)*s^2/σ^2. Wartość krytyczną
 Obliczmy wartość statystyki testowej:
 
 $$
-(n-1)*s^2/σ^2 = (150-1)*1.25^2/1^2 = 232.8125
+(n-1)\*s^2/σ^2 = (150-1)\*1.25^2/1^2 = 232.8125
 $$
 
 Teraz obliczmy wartość krytyczną dla rozkładu chi-kwadrat z 149 stopniami swobody i poziomem istotności 0.05. Wartość ta wynosi około 178.49.
