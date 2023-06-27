@@ -1,4 +1,46 @@
+### Wariancja i kowariancja
+
+**Wariancja** to miara rozproszenia danych, która pokazuje, jak bardzo dane różnią się od średniej. Wzór na wariancję dla populacji i próby jest nieco inny.
+
+Dla populacji:
+
+$$
+\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (X_i - \mu)^2
+$$
+
+gdzie:
+- \(X_i\) to wartości punktów danych,
+- \(\mu\) to średnia populacji,
+- \(N\) to liczba punktów danych.
+
+Dla próby:
+
+$$
+s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+$$
+
+gdzie:
+- \(x_i\) to wartości punktów danych,
+- \(\bar{x}\) to średnia próby,
+- \(n\) to liczba punktów danych.
+
+**Kowariancja** to miara, która pokazuje, jak bardzo dwie zmienne losowe zmieniają się razem. Wzór na kowariancję jest następujący:
+
+$$
+cov(X, Y) = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})
+$$
+
+gdzie:
+- \(x_i\) i \(y_i\) to wartości punktów danych,
+- \(\bar{x}\) i \(\bar{y}\) to średnie wartości punktów danych,
+- \(n\) to liczba punktów danych.
+
+Pamiętaj, że wariancja jest specjalnym przypadkiem kowariancji, gdy obie zmienne są takie same, tzn. \(var(X) = cov(X, X)\).
+
+
 ### KorelacjaPearsona 
+
+ ρ = Cov(X,Y) / (σ_x * σ_y) 
 
 $$
 r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^2 \sum_{i=1}^{n} (y_i - \bar{y})^2}}
