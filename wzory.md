@@ -126,3 +126,29 @@ gdzie:
 - \(n_1\) i \(n_2\) to rozmiary prób.
 
 Wartość Z-score jest następnie porównywana z wartością krytyczną z rozkładu normalnego standardowego, aby zdecydować, czy odrzucić hipotezę zerową.
+
+### Modele kolejkowe 
+1. **M/M/1**:
+   - Średnia liczba klientów w systemie (L): \( L = \frac{\rho}{1 - \rho} \)
+   - Średni czas spędzony przez klienta w systemie (W): \( W = \frac{1}{\mu - \lambda} \)
+   - Prawdopodobieństwo, że system jest pusty (P0): \( P0 = 1 - \rho \)
+   - Prawdopodobieństwo, że w systemie jest n klientów (Pn): \( Pn = (1 - \rho) * \rho^n \)
+
+2. **M/M/c** (gdzie c > 1):
+   - Prawdopodobieństwo, że system jest pusty (P0): \( P0 = \left[ \sum_{k=0}^{c-1} \frac{(c\rho)^k}{k!} + \frac{(c\rho)^c}{c!(1-\rho)} \right]^{-1} \)
+   - Średnia liczba klientów w systemie (L): \( L = \frac{(c\rho)^c}{c!(1-\rho)^2} * P0 + c\rho \)
+   - Średni czas spędzony przez klienta w systemie (W): \( W = \frac{L}{\lambda} \)
+
+3. **M/D/1**:
+   - Średnia liczba klientów w systemie (L): \( L = \frac{\rho^2 + \rho}{2(1-\rho)} \)
+   - Średni czas spędzony przez klienta w systemie (W): \( W = \frac{L}{\lambda} + \frac{1}{\mu} \)
+
+4. **M/G/1**:
+   - Średnia liczba klientów w systemie (L): \( L = \rho + \frac{\rho^2 + \lambda^2 \sigma^2_s}{2(1-\rho)} \)
+   - Średni czas spędzony przez klienta w systemie (W): \( W = \frac{L}{\lambda} \)
+
+gdzie:
+- \(\lambda\) to średni czas między przybyciem klientów (intensywność napływu),
+- \(\mu\) to średni czas obsługi,
+- \(\rho = \lambda / (\mu c)\) to intensywność ruchu na serwer,
+- \(\sigma^2_s\) to wariancja czasu obsługi.
