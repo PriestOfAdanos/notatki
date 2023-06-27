@@ -76,29 +76,3 @@ $$
 $$
 L = ρ / (1 - ρ) = (5/6) / (1 - 5/6) = 5
 $$
-
-
-
-(1) Weryfikacja hipotezy o odchyleniu standardowym w populacji wymaga zastosowania testu chi-kwadrat. W tym przypadku, hipoteza zerowa (H0) mówi, że odchylenie standardowe w populacji wynosi 1, a hipoteza alternatywna (H1) mówi, że odchylenie standardowe w populacji różni się od 1. 
-
-Znamy następujące wartości:
-- n (rozmiar próby) = 150,
-- s (odchylenie standardowe próby) = 1.25,
-- σ (odchylenie standardowe w populacji według H0) = 1,
-- α (poziom istotności) = 0.05.
-
-Statystyka testowa dla testu chi-kwadrat to (n-1)*s^2/σ^2. Wartość krytyczną dla testu dwustronnego z poziomem istotności α znajdujemy w tablicach rozkładu chi-kwadrat dla stopni swobody df = n - 1.
-
-Obliczmy wartość statystyki testowej:
-
-$$
-(n-1)*s^2/σ^2 = (150-1)*1.25^2/1^2 = 232.8125
-$$
-
-Teraz obliczmy wartość krytyczną dla rozkładu chi-kwadrat z 149 stopniami swobody i poziomem istotności 0.05. Wartość ta wynosi około 178.49.
-
-Ponieważ wartość statystyki testowej jest większa od wartości krytycznej, odrzucamy hipotezę zerową. Możemy więc stwierdzić, że na poziomie istotności 0.05 odchylenie standardowe cechy w populacji różni się istotnie od 1.
-
-(2) W tym przypadku mamy do czynienia z testem proporcji dla dwóch populacji. Hipoteza zerowa (H0) mówi, że proporcje palących w obu populacjach są takie same, a hipoteza alternatywna (H1) mówi, że proporcja palących w drugiej populacji jest większa.
-
-Znamy następujące wartoś
