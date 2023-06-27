@@ -30,8 +30,8 @@ Statystyka testowa dla testu proporcji to (p1 - p2) / sqrt(p*(1-p)*(1/n1 + 1/n2)
 Obliczmy wartość statystyki testowej:
 
 $$
-(p1 - p2) / sqrt(p*(1-p)*(1/n1 + 1/n2)) = (0.15 - 0.20) / sqrt((0.15*300 +
-
+(p1 - p2) / sqrt(p\*(1-p)\*(1/n1 + 1/n2)) = (0.15 - 0.20) / sqrt((0.15\*300 +
+$$
 Wartość statystyki testowej wynosi około -0.000048. Wartość krytyczna dla rozkładu normalnego z poziomem istotności 0.01 wynosi około -2.33 (dla testu jednostronnego). Ponieważ wartość statystyki testowej jest większa od wartości krytycznej, nie odrzucamy hipotezy zerowej. Możemy więc stwierdzić, że na poziomie istotności 0.01 nie ma podstaw do twierdzenia, że odsetek osób palących w drugiej populacji jest wyższy.
 
 (3) Równanie prostej regresji Y względem X ma postać Y = a + bX, gdzie b to współczynnik kierunkowy, a to wyraz wolny. Współczynnik kierunkowy b można obliczyć jako kowariancję cech X i Y podzieloną przez wariancję cechy X. Wyraz wolny a to średnia cechy Y minus b pomnożone przez średnią cechy X.
